@@ -112,9 +112,6 @@ public:
     MolSetup::moleculeXAtomIDY
     
     we can just take the last entry in the last row as this value.  */
-  uint lastAtomIndexInBox0 = 0;
-  uint lastResKindIndex = 0;
-
   std::string currResname;
 
   uint lastAtomIndexInBox0 = 0;
