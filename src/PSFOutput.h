@@ -49,6 +49,7 @@ private:
   uint totalBonds;
   uint totalAngles;
   uint totalDihs;
+  uint totalImprops;
 
   uint boxAtoms[BOX_TOTAL];
   uint boxBonds[BOX_TOTAL];

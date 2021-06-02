@@ -344,6 +344,31 @@ void PSFOutput::PrintDihedrals(FILE* outfile) const
   fputs("\n\n", outfile);
 }
 
+void PSFOutput::PrintImpropers(FILE* outfile) const
+{
+  fprintf(outfile, headerFormat, totalImprops, improperHeader);
+  uint atomID = 1;
+  uint lineEntry = 0;
+  uint thisKIndex = 0, mI = 0;
+  for(uint mol = 0; mol < molecules->count; ++mol) {
+    thisKIndex = molecules->kIndex[mol];
+    const MolKind& thisKind = molKinds[thisKIndex];
+    for(uint i = 0; i < thisKind.impropers.size(); ++i) {
+      fprintf(outfile, "%8d%8d", thisKind.dihedrals[i].a0 + atomID,
+              thisKind.dihedrals[i].a1 + atomID,
+              thisKind.dihedrals[i].a2 + atomID,
+              thisKind.dihedrals[i].a3 + atomID);
+      ++lineEntry;
+      if(lineEntry == impropsPerLine) {
+        lineEntry = 0;
+        fputc('\n', outfile);
+      }
+    }
+    atomID += thisKind.atoms.size();
+  }
+  fputs("\n\n", outfile);
+}
+
   void PSFOutput::PrintNAMDCompliantSuffix(FILE* outfile) const {
     fprintf(outfile, headerFormat, 0, improperHeader);
     fputs("\n\n", outfile);

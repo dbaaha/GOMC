@@ -94,6 +94,17 @@ public:
   uint kind;
 };
 
+class Improper
+{
+public:
+  Improper(uint atom0, uint atom1, uint atom2)
+    : a0(atom0), a1(atom1), a2(atom2) {}
+
+  //private:
+  uint a0, a1, a2;
+  uint kind;
+};
+
 class Bond
 {
 public:

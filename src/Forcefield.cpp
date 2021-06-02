@@ -39,6 +39,8 @@ void Forcefield::Init(const Setup& set)
   bonds.Init(set.ff.bond);
   angles->Init(set.ff.angle);
   dihedrals.Init(set.ff.dih);
+  // Impropers
+  impropers.Init(set.ff.imp);
 }
 
 void Forcefield::InitBasicVals(config_setup::SystemVals const& val,
