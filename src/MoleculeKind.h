@@ -156,6 +156,7 @@ public:
   BondList bondList;
   GeomFeature angles;
   GeomFeature dihedrals;
+  GeomFeature impropers;
   bool oneThree, oneFour;
 
   std::string name;

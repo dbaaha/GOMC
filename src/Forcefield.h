@@ -12,6 +12,8 @@ along with this program, also can be found at <http://www.gnu.org/licenses/>.
 #include "FFBonds.h"
 #include "FFAngles.h"
 #include "FFDihedrals.h"
+#include "FFImpropers.h"
+
 
 namespace config_setup
 {

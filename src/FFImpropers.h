@@ -19,13 +19,15 @@ namespace ff_setup
 {
 class Improper;
 }
-
-//FFDihKind
 //Stores parameters for Impropers kinds
-//dihedrals may require several sets of parameters to calculate,
-//these are stored in consecutive array elements, each kind's
-//parameter sets are delinated by subdiv
-//Dihedrals may be calculated by several different styles
+
+//An improper dihedral angle is a set of four atoms 
+//where three of the given atoms are connected to 
+//the other "central" atom:
+//In each improper dihedral angle, 
+//the first atom in the set is the central atom 
+//that the other three are attached to. 
+
 class FFImpropers
 {
 public:
@@ -34,7 +36,7 @@ public:
   //Initialize with data from parameter files
   void Init(ff_setup::Improper const& imp);
 
-  FFImpropers(void) : Kchi(NULL), delta(NULL), n(NULL) {}
+  FFImpropers(void) : Komega(NULL), omega0(NULL), n(NULL) {}
   ~FFImpropers(void);
 
 private:

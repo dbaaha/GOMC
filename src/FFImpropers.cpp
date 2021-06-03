@@ -12,9 +12,9 @@ along with this program, also can be found at <http://www.gnu.org/licenses/>.
 void FFImpropers::Init(ff_setup::Improper const& imp)
 {
   uint size = dih.getTerms(), numSubDiv = dih.getnamecnt(), count = 0;
-  Kchi = new double[size];
+  Komega = new double[size];
   n = new uint[size];
-  delta = new double[size];
+  omega0 = new double[size];
   subdiv.Init(numSubDiv);
   for (uint s = 0; s < numSubDiv; s++) {
     std::string div = dih.getname(s);

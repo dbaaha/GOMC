@@ -126,6 +126,7 @@ public:
   std::vector<Bond> bonds;
   std::vector<Angle> angles;
   std::vector<Dihedral> dihedrals;
+  std::vector<Improper> impropers;
 
   uint kindIndex;
 
