@@ -7,6 +7,7 @@ along with this program, also can be found at <http://www.gnu.org/licenses/>.
 #include "BoxDimensions.h"
 #include "GeomLib.h"
 #include "MoveConst.h" //For cutoff-related fail condition
+#include <mathimf.h>
 
 using namespace geom;
 
@@ -289,8 +290,9 @@ double BoxDimensions::UnwrapPBC(double& v, const double ref, const double ax,
     //Note: testing shows that it's most efficient to negate if true.
     //Source:
     // http://jacksondunstan.com/articles/2052
-    if ( ref < halfAx )
-      v -= ax;
+#pragma code_align 32
+      if ( ref < halfAx )
+        v -= ax;
     else
       v += ax;
   }
@@ -314,10 +316,10 @@ XYZ BoxDimensions::MinImage_X(XYZ rawVec, const uint b) const
 
 XYZ BoxDimensions::MinImage_Y(XYZ rawVec, const uint b) const
 {
+#pragma code_align 32
   rawVec.y = MinImageSigned(rawVec.y, axis.y[b], halfAx.y[b]);
   return rawVec;
 }
-
 XYZ BoxDimensions::MinImage_Z(XYZ rawVec, const uint b) const
 {
   rawVec.z = MinImageSigned(rawVec.z, axis.z[b], halfAx.z[b]);

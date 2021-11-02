@@ -146,6 +146,7 @@ public:
   }
 
   //returns row i - row j
+#pragma code_align 32
   XYZ Difference(const uint i, const uint j) const
   {
     return XYZ(x[i] - x[j], y[i] - y[j], z[i] - z[j]);

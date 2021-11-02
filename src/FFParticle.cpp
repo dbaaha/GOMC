@@ -328,6 +328,7 @@ inline double FFParticle::CalcEn(const double distSq, const uint index) const
   double n_ij = n[index];
   double repulse = pow(rRat2, (n_ij * 0.5));
 
+#pragma code_align 32
   return (epsilon_cn[index] * (repulse - attract));
 }
 
@@ -350,6 +351,7 @@ inline double FFParticle::CalcVir(const double distSq, const uint kind1,
   double softRsq = cbrt(softDist6);
   double correction = distSq / softRsq;
   //We need to fix the return value from calcVir
+#pragma code_align 32
   double vir = lambda * correction * correction * CalcVir(softRsq, index);
   return vir;
 }

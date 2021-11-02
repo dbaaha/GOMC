@@ -11,6 +11,7 @@ along with this program, also can be found at <http://www.gnu.org/licenses/>.
 #include "CalculateEnergy.h"
 #include "XYZArray.h"
 #include "Forcefield.h"
+#include <mathimf.h>
 
 namespace cbmc
 {

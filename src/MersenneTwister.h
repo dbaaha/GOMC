@@ -136,26 +136,34 @@ public:
 protected:
   void initialize( const uint32 oneSeed );
   void reload();
+#pragma code_align 32
   uint32 hiBit( const uint32 u ) const
   {
     return u & 0x80000000UL;
   }
+#pragma code_align 32
   uint32 loBit( const uint32 u ) const
   {
     return u & 0x00000001UL;
   }
+#pragma code_align 32
   uint32 loBits( const uint32 u ) const
   {
+#pragma code_align 32
     return u & 0x7fffffffUL;
   }
+#pragma code_align 32
   uint32 mixBits( const uint32 u, const uint32 v ) const
   {
+#pragma code_align 32
     return hiBit(u) | loBits(v);
   }
+#pragma code_align 32
   uint32 magic( const uint32 u ) const
   {
     return loBit(u) ? 0x9908b0dfUL : 0x0UL;
   }
+#pragma code_align 32
   uint32 twist( const uint32 m, const uint32 s0, const uint32 s1 ) const
   {
     return m ^ (mixBits(s0, s1) >> 1) ^ magic(s1);
@@ -212,8 +220,10 @@ inline void MTRand::reload()
   // Made clearer and faster by Matthew Bellew (matthew.bellew@home.com)
   static const int32 MmN = int32(M) - int32(N);
   // in case enums are unsigned
+#pragma code_align 32
   uint32 *p = state;
   int32 i;
+#pragma code_align 32
   for( i = N - M; i--; ++p )
     *p = twist( p[M], p[0], p[1] );
   for( i = M; --i; ++p )

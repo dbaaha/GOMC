@@ -94,10 +94,11 @@ inline void record_debug(uint* x, uint len, std::string filename, int linenumber
 }
 
 //******************************************************************************
-
+#pragma code_align 32
 typedef unsigned int uint;
 typedef unsigned long int ulong;
 
+#pragma code_align 32
 #define UNUSED(x) (void)(x)
 
 //single XYZ for use as a temporary and return type

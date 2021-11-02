@@ -120,6 +120,7 @@ public:
   }
 
   bool Done()
+#pragma code_align 32
   {
     return at == CellList::END_CELL;
   }
@@ -141,7 +142,7 @@ public:
   Neighbors(const std::vector<int>& list,
             const std::vector<int>& head,
             const std::vector<int>& neighbors);
-
+#pragma code_align 32
   int operator*() const
   {
     return *cell;

@@ -36,6 +36,7 @@ public:
 
   const MoleculeKind& GetKind(const uint molIndex) const
   {
+#pragma code_align 32
     return kinds[kIndex[molIndex]];
   }
 

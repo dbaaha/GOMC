@@ -188,6 +188,7 @@ inline XYZ BoxDimensions::WrapPBC(XYZ rawPos, const uint b) const
   return rawPos;
 }
 
+#pragma omp declare simd
 //Wrap one coordinate.
 inline XYZ BoxDimensions::WrapPBC(XYZ rawPos, const uint b, const bool &pbcX,
                                   const bool &pbcY, const bool &pbcZ) const
@@ -222,7 +223,9 @@ inline void BoxDimensions::UnwrapPBC(XYZArray & arr, const uint b, XYZ
 //Wrap range of coordinates in object
 inline void BoxDimensions::WrapPBC(XYZArray & arr, const uint start,
                                    const uint stop, const uint b) const
+
 {
+#pragma code_align 32
   for (uint i = start; i < stop; i++)
     WrapPBC(arr.x[i], arr.y[i], arr.z[i], b);
 }
@@ -242,6 +245,7 @@ inline bool BoxDimensions::InRcut(double & distSq, XYZ & dist,
                                   XYZArray const& arr, const uint i,
                                   const uint j, const uint b) const
 {
+#pragma code_align 32
   dist = MinImage(arr.Difference(i, j), b);
   distSq = dist.x * dist.x + dist.y * dist.y + dist.z * dist.z;
   return (rCutSq[b] > distSq);

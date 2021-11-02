@@ -1219,6 +1219,7 @@ void CalculateEnergy::MolNonbond_1_3(double & energy,
                      molKind.AtomCharge(molKind.nonBonded_1_3.part1[i]) *
                      molKind.AtomCharge(molKind.nonBonded_1_3.part2[i]);
 
+#pragma code_align 32
         if (qi_qj_fact != 0.0) {
           forcefield.particles->CalcCoulombAdd_1_4(energy, distSq,
               qi_qj_fact, false);

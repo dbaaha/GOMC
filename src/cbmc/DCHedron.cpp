@@ -15,6 +15,7 @@ along with this program, also can be found at <http://www.gnu.org/licenses/>.
 #include "NumLib.h"
 #include <numeric>
 #include <cassert>
+#include <mathimf.h>
 
 namespace
 {
